@@ -12,8 +12,8 @@ export const metadata: Metadata = {
       'Erik Warren - Software engineer, experience designer, and storyteller',
   },
   description:
-    `I’m Erik, a tech leader with 10+ years experience in software and a 
-      passion for product and experience design. I pride myself on being 
+    `I’m Erik Warren, a tech leader with 10+ years experience in software and a 
+      passion for product development and experience design. I pride myself on being 
       at the forefront of AI experience design and I'm based in Detroit, MI.`,
   alternates: {
     types: {
