@@ -84,9 +84,10 @@ export default function About() {
             </p>
             <p>
               I pride myself on being able to understand the nuances of customer
-              journeys.  Being able to empathize with the customer on an intimate
-              level the pain points and moments of friction they experience along
-              the way.  From there, we open our eyes to opportunities for amazing
+              journeys, being able to empathize with the customer on an intimate
+              level, and finding an appreciation for the pain points and moments
+              of friction they experience along the way.
+              From there, we open our eyes to opportunities for amazing
               innovations that can be actualized through iterative agile design sprints.
             </p>
             <p>
@@ -95,7 +96,7 @@ export default function About() {
               to telling a great story and it may need to be adjusted depending on
               where we are in the design/development process and the audience we have
               in front of us.  Being able to hammer home how the insights and secrets
-              we've discovered along the creative process uniquely positions us and
+              we've discovered along the creative journey uniquely positions us and
               our stakeholders to show up as the hero is key.  I want everybody in
               the audience to feel like we are on this journey together and that they
               have a stake in the game.  At precisely the right moment we introduce

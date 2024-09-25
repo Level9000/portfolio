@@ -1435,9 +1435,6 @@ video {
   --tw-shadow-color: rgb(39 39 42 / 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }
-.outline {
-  outline-style: solid;
-}
 .outline-offset-2 {
   outline-offset: 2px;
 }

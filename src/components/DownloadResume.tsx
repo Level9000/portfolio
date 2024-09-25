@@ -18,10 +18,9 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 const downloadResume = async () => {
     try {
-        // Replace with the actual path where the resume is stored.
-        const fileUrl = `/src/app/about/ErikWarrenResume.pdf`;
+        // Access the file via URL from the 'public' folder
+        const fileUrl = '/ErikWarrenResume.pdf';
 
-        // Fetch the file as a blob
         const response = await fetch(fileUrl);
 
         if (!response.ok) {
