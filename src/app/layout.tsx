@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   },
   description:
     `I’m Erik Warren, a tech leader with 10+ years experience in software and a 
-      passion for product development and experience design. I pride myself on being 
-      at the forefront of AI experience design and I'm based in Detroit, MI.`,
+      passion for product development, experience design, and the rapidly evolving AI field. 
+      I'm based in Detroit, MI.`,
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,

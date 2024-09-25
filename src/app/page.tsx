@@ -258,8 +258,8 @@ export default async function Home() {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Erik, a tech leader with 10+ years experience in software and a
-            passion for product and experience design. I pride myself on being
-            at the forefront of AI experience design and I'm based in Detroit, MI.
+            passion for product and experience design leveraging AI along the way.
+            I'm based in Detroit, MI.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
