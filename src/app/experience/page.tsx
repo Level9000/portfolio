@@ -10,43 +10,52 @@ const projects = [
   {
     name: 'Experience Design AI Program',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
+      'Championed the foundation for what our Experience Design AI Program within Ford XD would be.  ' +
+        'Elements including forging external partnerships with industry leading AI players, ' +
+        'researching latest trends and technical discoveries, ' +
+        'prototyping experiences that leverage emerging technologies and attacked customer problems, ' +
+        'iteratively executing agile design sprints using a build, measure, learn cycle, ' +
+        'and finally, forging strategic partnerships within the organization so that our creations had permanent homes.',
     logo: logoFord,
   },
   {
     name: 'Test Drive - Your Way',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
+      'details coming soon.',
     logo: logoFord,
   },
   {
     name: 'Personalized Vehicle Delivery',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
+      'details coming soon.',
     logo: logoFord,
   },
   {
     name: 'Ford Advisors 24/7 Live Support',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
+      'details coming soon.',
     logo: logoFord,
   },
   {
     name: 'Ford Psychological Safety Initiative',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
+      'details coming soon.',
     logo: logoFord,
   },
   {
     name: 'Software Craftsmanship Bootcamp - Instructor',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
+      'Details coming soon.',
     logo: logoFord,
   },
   {
     name: 'Hack Dearborn - U of M Dearborn Hackathon Keynote Speaker',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
+      'I was fortunate enough to provide the keynote speech at a University of Michigan - Dearborn ' +
+        'Hackathon titled "Hack Dearborn".  I provided students with guidance on how to navigate the world ' +
+        'of Software Engineering with the emergence of AI.  I also provided structure on how to experiment ' +
+        'in an agile way that leverages design sprints; forming hypothesis, crafting experiments, building ' +
+        'prototypes, gathering insights, and iterating until you hone in on what your product or solution will be.',
     logo: logoMichigan,
   },
 ]
