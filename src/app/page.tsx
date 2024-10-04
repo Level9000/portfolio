@@ -13,9 +13,9 @@ import {
 } from '@/components/SocialIcons'
 import logoFord from '@/images/logos/ford-logo.svg'
 import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import aiva from '@/images/photos/aiva.jpg'
+import portrait from '@/images/photos/portrait.jpg'
+import cv from '@/images/photos/erik-cv.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import DownloadResume from "@/components/DownloadResume";
@@ -69,7 +69,7 @@ function BriefcaseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
     <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
+      <Card.Title href={`/thoughts/${article.slug}`}>
         {article.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
@@ -224,7 +224,7 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image2, image3, image4, image5].map((image, imageIndex) => (
+        {[image2, aiva, portrait, cv].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
