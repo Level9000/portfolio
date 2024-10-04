@@ -253,12 +253,13 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I've got a story for you about: Dreaming, Building, and Scaling.
+            Let's dream, build, and scale
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Erik, a tech leader with 10+ years experience in software and a
             passion for product and experience design leveraging AI along the way.
-            I'm based in Detroit, MI.
+            I've cultivated brilliant ideas.  I've built awesome products.  I've
+            launched them at scale. I'm based in Detroit, MI. Let's chat!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
