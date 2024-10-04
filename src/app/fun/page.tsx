@@ -59,24 +59,32 @@ export default function Speaking() {
         <SpeakingSection title="Author">
           <Appearance
             href="#"
-            title="In space, no one can watch you stream — until now"
-            description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
+            title="Bringing the personal touch of your favorite Barista to your morning coffee routine"
+            description="Leveraging an iPhone camera, computer vision, elevenlabs voice, and llama 3.2;
+            I'm cultivating a morning coffee companion that recognizes me, automatically starts my coffee
+            maker, and provides some heartwarmingly fun conversation."
             event="Coffee Bot AI"
-            cta="Check it out"
+            cta="Link coming soon"
           />
           <Appearance
             href="#"
-            title="Lessons learned from our first product recall"
-            description="They say that if you’re not embarassed by your first version, you’re doing it wrong. Well when you’re selling DIY space shuttle kits it turns out it’s a bit more complicated."
+            title="Imaginging a personal AI assistant that displays visible emotional responses"
+            description="The inspiration for Coffee Bot AI. This project imagines what an AI avatar
+            could look like and displays multiple emotional facial responses as you interact with it.
+            Leverages llama 3.2 for dictating and natural language processing, elevenlabs for voice,
+            and runway gen3 for animations"
             event="Multimodal Digital Assistant"
-            cta="Check it out"
+            cta="Link coming soon"
           />
           <Appearance
             href="#"
-            title="Lessons learned from our first product recall"
-            description="They say that if you’re not embarassed by your first version, you’re doing it wrong. Well when you’re selling DIY space shuttle kits it turns out it’s a bit more complicated."
+            title="Generating guitar tabs inspired by your music preferences"
+            description="This project is still in its infancy but I'm exploring the concept of training
+            an LLM on guitar tabs from my favorite artists in hopes of generating inspired new tabs that
+            I can use to practice playing guitar. Leveraging LangChain, Supabase, and a host of LLM providers
+            until I find what I'm looking for"
             event="Guitar Tab Generator"
-            cta="Check it out"
+            cta="Link coming soon"
           />
         </SpeakingSection>
         <SpeakingSection title="Contributor">
@@ -88,7 +96,7 @@ export default function Speaking() {
             open source models like Stable Diffusion or Loras like Flux.1, ComfyUI gives you precise control
             over the diffusion process."
                 event="www.comfy.org"
-                cta="Check it out"
+                cta="Link coming soon"
             />
 
         </SpeakingSection>

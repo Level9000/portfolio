@@ -12,7 +12,7 @@ import {
   XIcon,
 } from '@/components/SocialIcons'
 import logoFord from '@/images/logos/ford-logo.svg'
-import image2 from '@/images/photos/image-2.jpg'
+import ces from '@/images/photos/ces.jpg'
 import aiva from '@/images/photos/aiva.jpg'
 import portrait from '@/images/photos/portrait.jpg'
 import cv from '@/images/photos/erik-cv.jpg'
@@ -224,7 +224,7 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image2, aiva, portrait, cv].map((image, imageIndex) => (
+        {[ces, aiva, portrait, cv].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
