@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/fun/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/fun/page.js"
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,30 +16,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/_not-found/page": [
+    "/thoughts/building-a-culture-that-thrives/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/thoughts/building-a-culture-that-thrives/page.js"
+    ],
+    "/thoughts/software-engineering-in-a-world-with-ai/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/thoughts/software-engineering-in-a-world-with-ai/page.js"
     ],
     "/experience/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/experience/page.js"
     ],
-    "/about/page": [
+    "/thoughts/executing-design-sprints-the-agile-way/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
+      "static/chunks/app/thoughts/executing-design-sprints-the-agile-way/page.js"
     ],
-    "/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/_not-found/page.js"
     ],
-    "/thoughts/page": [
+    "/thoughts/working-template/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/thoughts/page.js"
+      "static/chunks/app/thoughts/working-template/page.js"
     ]
   }
 }
