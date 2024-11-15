@@ -262,11 +262,11 @@ export default async function Home() {
             launched them at scale. I'm based in Detroit, MI. Let's chat!
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink
+            {/* <SocialLink
               href="https://github.com/Level9000/"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
-            />
+            /> */}
             <SocialLink
               href="https://www.linkedin.com/in/erik-warren-4b194846/"
               aria-label="Follow on LinkedIn"
