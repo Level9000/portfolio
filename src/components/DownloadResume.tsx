@@ -18,37 +18,29 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 const downloadResume = async () => {
     try {
-        // Access the file via URL from the 'public' folder
-        const fileUrl = '/ErikWarrenResume.pdf';
-
-        const response = await fetch(fileUrl);
-
-        if (!response.ok) {
-            throw new Error('Failed to download file');
-        }
-
-        // Convert the response to a blob
-        const blob = await response.blob();
-
-        // Create a temporary URL for the blob
-        const downloadUrl = window.URL.createObjectURL(blob);
-
-        // Create a temporary <a> element
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = 'ErikWarrenResume.pdf'; // Set the filename for the download
-
-        // Append the <a> element to the body and trigger the download
-        document.body.appendChild(a);
-        a.click();
-
-        // Clean up by removing the <a> element and releasing the URL object
-        a.remove();
-        window.URL.revokeObjectURL(downloadUrl);
+      console.log('Downloading resume...');
+      const fileUrl = '/ErikWarrenResume.pdf';
+      const response = await fetch(fileUrl, { mode: 'cors' });
+      console.log('Response:', response);
+      if (!response.ok) {
+        throw new Error('Failed to download file');
+      }
+      const blob = await response.blob();
+      console.log('Blob:', blob);
+      const downloadUrl = window.URL.createObjectURL(blob);
+      console.log('Download URL:', downloadUrl);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = 'ErikWarrenResume.pdf';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(downloadUrl);
     } catch (error) {
-        console.error('Download failed:', error);
+      console.error('Download failed:', error);
     }
-};
+  };
 
 // Example component that triggers the download
 const ResumeDownloader: React.FC = () => {

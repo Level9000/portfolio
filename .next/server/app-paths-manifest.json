@@ -1,7 +1,4 @@
 {
   "/page": "app/page.js",
-  "/thoughts/building-a-culture-that-thrives/page": "app/thoughts/building-a-culture-that-thrives/page.js",
-  "/thoughts/software-engineering-in-a-world-with-ai/page": "app/thoughts/software-engineering-in-a-world-with-ai/page.js",
-  "/thoughts/executing-design-sprints-the-agile-way/page": "app/thoughts/executing-design-sprints-the-agile-way/page.js",
-  "/thoughts/working-template/page": "app/thoughts/working-template/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
