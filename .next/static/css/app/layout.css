@@ -1631,6 +1631,10 @@ video {
     display: none;
   }
 
+  .md\:w-96 {
+    width: 24rem;
+  }
+
   .md\:flex-1 {
     flex: 1 1 0%;
   }
@@ -1645,6 +1649,10 @@ video {
 
   .md\:justify-center {
     justify-content: center;
+  }
+
+  .md\:gap-10 {
+    gap: 2.5rem;
   }
 
   .md\:border-l {
@@ -1708,6 +1716,10 @@ video {
 
   .lg\:grid-rows-\[auto_1fr\] {
     grid-template-rows: auto 1fr;
+  }
+
+  .lg\:gap-12 {
+    gap: 3rem;
   }
 
   .lg\:gap-y-12 {

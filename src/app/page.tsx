@@ -1,6 +1,7 @@
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import './page.css'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -76,7 +77,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      {/*<Card.Cta>Read article</Card.Cta>*/}
+      <Card.Cta>Read article</Card.Cta>
     </Card>
   )
 }
@@ -222,20 +223,20 @@ function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+    <div className="image-container">
+      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8 md:gap-10 lg:gap-12">
         {[ces, aiva, portrait, cv].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
+              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 md:w-96 lg:w-120 sm:rounded-2xl dark:bg-zinc-800',
               rotations[imageIndex % rotations.length],
             )}
           >
             <Image
               src={image}
               alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
+              sizes="(min-width: 640px) 18rem, (min-width: 1280px) 24rem, 11rem"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
