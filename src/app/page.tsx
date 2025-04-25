@@ -20,6 +20,9 @@ import cv from '@/images/photos/erik-cv.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import DownloadResume from "@/components/DownloadResume";
+import React, { useState } from 'react';
+import Carousel from 'react-multi-carousel';
+import { useSwipeable } from 'react-swipeable';
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -219,32 +222,104 @@ function Resume() {
   )
 }
 
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+// function Photos() {
+//   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+
+//   return (
+//     <div className="image-container">
+//       <div className="flex flex-col justify-center gap-5 overflow-hidden py-4">
+//         {[ces, aiva, portrait, cv].map((image, imageIndex) => (
+//           <div
+//             key={image.src}
+//             className={clsx(
+//               'relative aspect-[9/10] w-full overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800',
+//               rotations[imageIndex % rotations.length],
+//               {
+//                 'sm:w-1/2 sm:mx-auto sm:mb-4': true,
+//                 'md:w-1/2 md:mx-auto md:mb-4': true,
+//                 'lg:w-1/3 lg:mx-auto lg:mb-4': true,
+//               },
+//               {
+//                 'sm:h-48 sm:w-48': true,
+//                 'md:h-64 md:w-64': true,
+//                 'lg:h-80 lg:w-80': true,
+//               },
+//             )}
+//           >
+//             <Image
+//               src={image}
+//               alt=""
+//               sizes="(min-width: 640px) 18rem, (min-width: 1280px) 24rem, 11rem"
+//               className="absolute inset-0 h-full w-full object-cover"
+//             />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+const Photos = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const images = [
+    'https://picsum.photos/200/300',
+    'https://picsum.photos/200/301',
+    'https://picsum.photos/200/302',
+    'https://picsum.photos/200/303',
+    'https://picsum.photos/200/304',
+  ];
+
+  const handlers = useSwipeable({
+    onSwiped: (eventData) => {
+      if (eventData.dir === 'Left') {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+      } else if (eventData.dir === 'Right') {
+        setActiveIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+      }
+    },
+  });
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   return (
-    <div className="image-container">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8 md:gap-10 lg:gap-12">
-        {[ces, aiva, portrait, cv].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 md:w-96 lg:w-120 sm:rounded-2xl dark:bg-zinc-800',
-              rotations[imageIndex % rotations.length],
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, (min-width: 1280px) 24rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+    <div {...handlers} className="tilted-image-carousel">
+      <Carousel
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={false}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        customTransition="transform 300ms ease-in-out"
+        transitionDuration={300}
+        containerClass="carousel-container"
+        dotListClass="custom-dot-list-style"
+      >
+        {images.map((image, index) => (
+          <div key={index} className="tilted-image">
+            <img src={image} alt={`Image ${index}`} />
           </div>
         ))}
-      </div>
+      </Carousel>
     </div>
-  )
-}
+  );
+};
 
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
@@ -254,13 +329,11 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Let's dream, build, and scale
-          </h1>
+          Hi, I'm Erik
+          </h1> 
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Erik, a tech leader with 10+ years experience in software and a
-            passion for product and experience design leveraging AI along the way.
-            I've cultivated brilliant ideas.  I've built awesome products.  I've
-            launched them at scale. I'm based in Detroit, MI. Let's chat!
+          A tech leader with 10+ years experience in software and a passion for product and experience design leveraging AI along the way. 
+          I've cultivated brilliant ideas. I've built awesome products. I've launched them at scale. I'm based in Detroit, MI. Let's chat!
           </p>
           <div className="mt-6 flex gap-6">
             {/* <SocialLink
