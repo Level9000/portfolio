@@ -1,5 +1,16 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/feed.xml/route": "app/feed.xml/route.js",
   "/page": "app/page.js",
+  "/thank-you/page": "app/thank-you/page.js",
+  "/fun/page": "app/fun/page.js",
+  "/about/page": "app/about/page.js",
   "/experience/page": "app/experience/page.js",
-  "/about/page": "app/about/page.js"
+  "/thoughts/page": "app/thoughts/page.js",
+  "/thoughts/executing-design-sprints-the-agile-way/page": "app/thoughts/executing-design-sprints-the-agile-way/page.js",
+  "/thoughts/software-engineering-in-a-world-with-ai/page": "app/thoughts/software-engineering-in-a-world-with-ai/page.js",
+  "/thoughts/the-art-of-storytelling/page": "app/thoughts/the-art-of-storytelling/page.js",
+  "/thoughts/building-a-culture-that-thrives/page": "app/thoughts/building-a-culture-that-thrives/page.js",
+  "/uses/page": "app/uses/page.js"
 }
