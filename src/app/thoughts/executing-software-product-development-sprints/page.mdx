@@ -1,0 +1,88 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Erik Warren',
+  date: '2025-04-01',
+  title: 'Executing Software Product Development Sprints',
+  description:
+    'An Agile Product Development Sprint is a time-boxed period, typically 2-4 weeks, where a cross-functional team works together to deliver a specific set of features or user stories. The focus is on building and delivering a working product, with the goal of meeting customer needs and business objectives.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+
+# Introduction:
+
+As we learned in my previous post, agile design sprints are great for leveraging prototypes to test hypothesis against known customer problems. Well, what happens once our hypothesis have been validated? What do we do now that we are sure we know what our customers want? This is where the Agile Product Development Sprint comes in.
+
+# So, What is it?
+
+An Agile Product Development Sprint is a time-boxed period, typically 2-4 weeks, where a cross-functional team works together to deliver a specific set of features or user stories. The focus is on building and delivering a working product, with the goal of meeting customer needs and business objectives.
+
+# Define our Sprint Goal:
+
+Every Agile Product Development Sprint needs to have a clearly defined goal or objective. Something simple that can be achieved in a 2 week time span (my personal sprint preference). A Sprint Goal is a clear and concise statement that defines what the team aims to achieve during the sprint. It should be specific, measurable, achievable, relevant, and time-bound (SMART). We want to provide new value to our customer by the end of the sprint. Keep it short if you can. A Sprint Goal that can be contained to a single sentence is easy for everybody to remember. Here are some examples:
+
+-   Deliver a working login feature so that users can successfully login
+    
+-   Implement a new payment gateway so that customers can pay with a credit card
+    
+-   Allow our customers to subscribe to our website and receive our weekly newsletter
+    
+
+The responsibility of defining a Sprint Goal usually falls on our Product Owner but its important that the entire team is aligned on the direction moving forward. It’s going to be a group effort delivering the new feature.
+
+# Sprint Planning:
+
+Before we get into execution, we need to prepare for our upcoming sprint. At this point, our stakeholders have aligned on our the Sprint Goal and with the help of our Product Owner, we want to make sure that our delivery team has a clear understanding of what needs to be done, how it will be done, and by when. We achieve these three things during our Sprint Planning Meeting.
+
+During the meeting, the Product Owner assumes responsibility of tasks like:
+
+-   defining the product backlog (if one does not yet exist)
+    
+-   prioritizing the product backlog (determining the order of importance of user stories)
+    
+-   grooming the backlog(adding, removing, or updating user stories)
+    
+
+With the Sprint Goal always in the back of our minds, the Product Owner gathers feedback from everybody on the team to ensure we’ve estimated our scope of work to the best of our abilities. Our User Stories are up to date, Our level of effort has been estimated, and our expected delivery is understood. Let’s get this sprint started!
+
+# Working the Sprint:
+
+Throughout the course of the sprint, the team meets each morning for a brief Daily Standup session. This meeting is led by the Product Owner and lasts 15 minutes or less. Its an opportunity for our development team to do 2 things:
+
+-   get daily work assignments (user stories)
+    
+-   flag any blockers they are currently dealing with on user stories that were not completed the day before
+    
+
+Each day, the team splits off into pairs and grabs a user story form the backlog. I prefer the user stories to be written small enough that they can be completed within a single day by a pair of developers.
+
+I also prefer to work in pairs. Some may argue that having two engineers working on a single user story is counterproductive but in my experience, its quite the opposite. I’ve observed pairing raise overall quality and increase velocity. You are getting a continuous code review with two sets of eyes. Because we are keeping our user stories short, we afford our team the opportunity to switch pairs multiple times per week. Everybody has an opportunity to learn something new from the diverse skill sets of their team members. (I’m also a big fan of test driven development for quality purposes but I’ll get into that in another post).
+
+Before long, you find yourself on a high functioning team writing high quality code and values team ownership over depending on individual heroes.
+
+As the team continuous to crank away at the user stories in the backlog, we get closer and closer to achieving our agreed upon sprint goal.
+
+# Demo:
+
+We’ve built our feature! It’s time to show off our work. At this point, we’ve executed all of our outstanding user stories and built out the functionality that was agreed upon at the beginning of the sprint. The demo is a standard agile ceremony and is a staple in agile product development sprints. It occurs at the end of the sprint and it’s our chance to show our stakeholders the new functionality that we’ve added. Our stakeholders are anybody that have a vested interest in the product. It’s really up to you who you want to include to your demo. If it’s important for a team to see the work you’ve done, invite them to your demo.
+
+# Retro:
+
+The final agile ceremony in a given sprint is called a retrospective or ‘retro’ for short. A retro is a regular, structured meeting where team members reflect on their recent sprint. It’s an opportunity for the team to discuss what went well, what didn't, and identify areas for improvement. The primary goal of a retro is to learn from past experiences, gather feedback, and implement changes to optimize future workflows, communication, and collaboration. It’s important to document the action items and assign them to team members so that somebody is accountable for delivering the agreed upon change.
+
+Regular retros help to foster a healthy team culture if done properly. Remember to value everybody’s thoughts equally and establish a safe space for everybody to share free from humiliation or ridicule. Thanks those for sharing and do you best to keep any one contributor from dominating the conversation. Keep things professional and try to stray away from complaining and dumping on your team members. There are some great tools available to help facilitate retros. One of my favorites is a tool built by some former colleagues of mine at Ford. You can check it out for yourself at retroquest.ford.com.
+
+# Repeat:
+
+Just like the Agile Design Sprint, the Agile Product Development Sprint is an iterative and repeatable process. As the design team is continually identifying solutions to known customer problems, our development team is continually building our new functionality. Each and every product development sprint will contain the same core components: defining the sprint goal, hosting a sprint planning meeting, working the sprint, demo, and retro.
+
+# So, Why Agile?
+
+Adopting Agile methodologies can bring numerous benefits to a product development team. By embracing Agile's iterative and incremental approach, teams can respond quickly to changing customer needs, market trends, and stakeholder feedback. If you have any thoughts or questions, feel free to send them my way!
