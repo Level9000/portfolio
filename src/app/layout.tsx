@@ -1,25 +1,23 @@
 import { type Metadata } from 'next'
-
-import { Providers } from '@/app/providers'
-import { Layout } from '@/components/Layout'
+import { Inter } from 'next/font/google'
+import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
 export const metadata: Metadata = {
   title: {
-    template: '%s - Erik Warren',
-    default:
-      'Erik Warren - Software engineer, experience designer, and storyteller',
+    template: '%s - Pocket',
+    default: 'White Glove Chat - Put your stamp on branded messaging',
   },
   description:
-    `I’m Erik Warren, a tech leader with 10+ years experience in software and a 
-      passion for product development, experience design, and the rapidly evolving AI field. 
-      I'm based in Detroit, MI.`,
-  alternates: {
-    types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
-    },
-  },
+    'Your service is luxury.  ' +
+    'Now your messaging can be too.',
 }
 
 export default function RootLayout({
@@ -28,14 +26,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-      <body className="flex h-full bg-zinc-50 dark:bg-black">
-        <Providers>
-          <div className="flex w-full">
-            <Layout>{children}</Layout>
-          </div>
-        </Providers>
-      </body>
+    <html lang="en" className={clsx('bg-white antialiased', inter.variable)}>
+      <body>{children}</body>
     </html>
   )
 }

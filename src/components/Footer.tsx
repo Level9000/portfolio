@@ -1,46 +1,34 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
-import { ContainerInner, ContainerOuter } from '@/components/Container'
+import { Button } from '@/components/Button'
+import { Container } from '@/components/Container'
+import { TextField } from '@/components/Fields'
+import { NavLinks } from '@/components/NavLinks'
+import qrCode from '@/images/qr-code.svg'
 
-function NavLink({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
+function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <Link
-      href={href}
-      className="transition hover:text-teal-500 dark:hover:text-teal-400"
-    >
-      {children}
-    </Link>
+    <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M1 17V9a8 8 0 0 1 8-8h8M95 17V9a8 8 0 0 0-8-8h-8M1 79v8a8 8 0 0 0 8 8h8M95 79v8a8 8 0 0 1-8 8h-8"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
   )
 }
 
 export function Footer() {
   return (
-    <footer className="mt-32 flex-none">
-      <ContainerOuter>
-        <div className="border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40">
-          <ContainerInner>
-            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                <NavLink href="/">Home</NavLink>
-                <NavLink href="/about">About</NavLink>
-                <NavLink href="/experience">Experience</NavLink>
-                <NavLink href="/thoughts">Thoughts</NavLink>
-                <NavLink href="/fun">Fun</NavLink>
-              </div>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Erik Warren. All rights
-                reserved.
-              </p>
-            </div>
-          </ContainerInner>
+    <footer className="border-t border-gray-200">
+      <Container>
+        <div className="flex flex-col items-center border-t border-gray-200 pt-8 pb-12 md:flex-row-reverse md:justify-between md:pt-6">
+          <p className="mt-6 text-sm text-gray-500 md:mt-0">
+            Pocket Panel is a product of Small Machines AI LLC. &copy; Copyright {new Date().getFullYear()}. All rights reserved.
+          </p>
         </div>
-      </ContainerOuter>
+      </Container>
     </footer>
   )
 }

@@ -1,28 +1,53 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 
-const variantStyles = {
-  primary:
-    'bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70',
-  secondary:
-    'bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70',
+const baseStyles = {
+  solid:
+    'inline-flex justify-center rounded-lg py-2 px-3 text-sm font-semibold transition-colors',
+  outline:
+    'inline-flex justify-center rounded-lg border py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-sm transition-colors',
 }
 
-type ButtonProps = {
-  variant?: keyof typeof variantStyles
-} & (
-  | (React.ComponentPropsWithoutRef<'button'> & { href?: undefined })
-  | React.ComponentPropsWithoutRef<typeof Link>
-)
+const variantStyles = {
+  solid: {
+    cyan: 'relative overflow-hidden bg-cyan-500 text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-cyan-600 active:text-white/80 before:transition-colors',
+    white:
+      'bg-white text-cyan-900 hover:bg-white/90 active:bg-white/90 active:text-cyan-900/70',
+    gray: 'bg-pocket-800 text-white hover:bg-pocket-900 active:bg-pocket-800 active:text-white/80',
+  },
+  outline: {
+    gray: 'border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80',
+  },
+}
 
-export function Button({
-  variant = 'primary',
-  className,
-  ...props
-}: ButtonProps) {
+type ButtonProps = (
+  | {
+      variant?: 'solid'
+      color?: keyof typeof variantStyles.solid
+    }
+  | {
+      variant: 'outline'
+      color?: keyof typeof variantStyles.outline
+    }
+) &
+  (
+    | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
+    | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
+        href?: undefined
+      })
+  )
+
+export function Button({ className, ...props }: ButtonProps) {
+  props.variant ??= 'solid'
+  props.color ??= 'gray'
+
   className = clsx(
-    'inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none',
-    variantStyles[variant],
+    baseStyles[props.variant],
+    props.variant === 'outline'
+      ? variantStyles.outline[props.color]
+      : props.variant === 'solid'
+        ? variantStyles.solid[props.color]
+        : undefined,
     className,
   )
 
