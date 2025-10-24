@@ -173,6 +173,24 @@
     }
 }
 
+@layer base {
+    /* Tell the browser we’re dark (better form controls/scrollbars) */
+    :root { color-scheme: dark; }
+
+    /* Site-wide dark background + readable default text */
+    html, body {
+        @apply bg-[#0D0D0D] text-white antialiased;
+        min-height: 100%;
+    }
+
+    /* Optional: nicer text selection on dark */
+    ::selection {
+        background: #334155; /* slate-700-ish */
+        color: #ffffff;
+    }
+}
+
+
 /* Optional quick-tweak helpers (stackable) */
 @utility dash-thicker { --dash-thickness: 6px; }
 @utility dash-longer  { --dash-length: 32px; }

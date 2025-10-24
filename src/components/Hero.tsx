@@ -1,94 +1,53 @@
 // components/Hero.tsx
 'use client'
 
-import { useId } from 'react'
-import Image from 'next/image'
-import { AppStoreLink } from '@/components/AppStoreLink'
-import { Button } from '@/components/Button'
+import { useEffect, useState } from 'react'
+import ProfileCard from '@/components/ProfileCard'
 import { Container } from '@/components/Container'
 
-// ---------- Background rings ----------
-function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
-  const id = useId()
-  return (
-    <div {...props} aria-hidden="true">
-      <svg viewBox="0 0 1026 1026" fill="none" className="absolute inset-0 h-full w-full animate-spin-slow">
-        <path d="M1025 513c0 282.77-229.23 512-512 512S1 795.77 1 513 230.23 1 513 1s512 229.23 512 512Z" stroke="#D4D4D4" strokeOpacity="0.7" />
-        <path d="M513 1025C230.23 1025 1 795.77 1 513" stroke={`url(#${id}-g1)`} strokeLinecap="round" />
-        <defs>
-          <linearGradient id={`${id}-g1`} x1="1" y1="513" x2="1" y2="1025">
-            <stop stopColor="#F4B228" />
-            <stop offset="1" stopColor="#F4B228" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <svg viewBox="0 0 1026 1026" fill="none" className="absolute inset-0 h-full w-full animate-spin-reverse-slower">
-        <path d="M913 513c0 220.914-179.086 400-400 400S113 733.914 113 513s179.086-400 400-400 400 179.086 400 400Z" stroke="#D4D4D4" strokeOpacity="0.7" />
-        <path d="M913 513c0 220.914-179.086 400-400 400" stroke={`url(#${id}-g2)`} strokeLinecap="round" />
-        <defs>
-          <linearGradient id={`${id}-g2`} x1="913" y1="513" x2="913" y2="913">
-            <stop stopColor="#F4B228" />
-            <stop offset="1" stopColor="#F4B228" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  )
-}
-
-// ---------- Phone Image (cropped & anchored higher) ----------
-function PhoneHeroImage() {
-  return (
-    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px]
-                    h-[520px] sm:h-[560px] lg:h-[580px] overflow-hidden">
-      <Image
-        src="/images/handmark_logo.png"
-        alt="Handmark logo"
-        fill
-        priority
-        className="object-top object-contain"
-        sizes="(max-width: 640px) 70vw, (max-width: 1024px) 40vw, 440px"
-      />
-    </div>
-  )
-}
-
 export function Hero() {
-  return (
-    <div className="stitch-bottom text-[#ECC969] overflow-hidden pt-12 sm:pt-20 pb-0">
-      <Container>
-        <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
-          {/* Copy / CTAs */}
-          <div className="relative z-20 mx-auto max-w-2xl lg:col-span-6 lg:max-w-none lg:pt-6">
-            <h1 className="text-5xl font-medium text-balance tracking-tight text-pocket-900">
-              Welcome to White Glove Chat
-            </h1>
-            <p className="mt-6 text-xl font-medium text-pocket-800">
-              Put your stamp on branded messaging.
-            </p>
-            <p className="mt-6 text-lg text-gray-700">
-              White Glove Chat is the simplest way to manage customer communication and trust.
-              Send branded updates, confirm appointments, and share live arrival times all from one intuitive portal.
-              White Glove Chat connects to your scheduling and payment tools, includes pre-written one-tap messages, and ensures
-              your customers always know exactly who’s reaching out.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
-              <AppStoreLink />
-              <Button href="https://www.youtube.com/channel/UCOGD_NRubtHDCvXXhoXojTw" variant="outline">
-                <span className="ml-0">Watch the video</span>
-              </Button>
-            </div>
-          </div>
+    const [reducedMotion, setReducedMotion] = useState(false)
+    useEffect(() => {
+        const q = window.matchMedia('(prefers-reduced-motion: reduce)')
+        const apply = () => setReducedMotion(q.matches)
+        apply()
+        q.addEventListener?.('change', apply)
+        return () => q.removeEventListener?.('change', apply)
+    }, [])
 
-          {/* Phone image + background rings */}
-          <div className="relative z-10 mt-6 sm:mt-8 lg:mt-[-20px] lg:col-span-6 lg:row-span-2">
-            <BackgroundIllustration className="absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 opacity-80 sm:top-16 sm:-translate-x-1/2 lg:-top-16 xl:-top-14 z-0" />
-            <div className="relative z-10">
-              <PhoneHeroImage />
-            </div>
-          </div>
+    return (
+        <div className="relative overflow-hidden pt-12 sm:pt-20 pb-0 bg-[#0D0D0D] text-white">
+            <Container>
+                <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
+                    <div className="relative z-10 mx-auto max-w-2xl lg:col-span-6 lg:max-w-none lg:pt-6">
+                        <h1 className="text-5xl font-medium text-balance tracking-tight text-white">
+                            Hi, I&apos;m Erik Warren
+                        </h1>
+                        <p className="mt-6 text-xl font-medium text-[#A6B1C2]">
+                            A Founder, Tech Leader, and Creative Technologist
+                        </p>
+                        <p className="mt-6 text-lg text-[#C0C6D1]">
+                            With over 13 years of experience in software and product design, I specialize in bringing ideas to life—from concept to launch. Whether you need a mobile app, website, backend system, API integration, or AI-powered content creation, I can design and build the right solution for you.
+                        </p>
+                        <p className="mt-6 text-lg text-[#C0C6D1]">
+                            I’ve founded companies, shipped products at scale, and love collaborating with teams who want to move fast and make something remarkable. Based in Detroit, MI and open to freelance work and creative partnerships—let’s build something great together.
+                        </p>
+                    </div>
+
+                    <div className="relative z-10 mt-8 lg:mt-[-20px] lg:col-span-6 lg:row-span-2 flex items-start justify-center">
+                        <ProfileCard
+                            className="z-10"
+                            name="Erik Warren"
+                            title="Founder • Tech Leader • Creative Technologist"
+                            photoSrc="/images/profile_photo.png"
+                            resumeHref="/cv/erik_warren_cv.pdf"
+                            linkedinHref="https://www.linkedin.com/in/erik-warren-4b194846/"
+                            githubHref="https://github.com/Level9000"
+                            emailHref="mailto:erik@smallmachines.ai"
+                        />
+                    </div>
+                </div>
+            </Container>
         </div>
-      </Container>
-    </div>
-  )
+    )
 }

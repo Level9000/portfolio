@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { useInView } from 'framer-motion'
+import { useInView } from 'motion/react'
 
 import { Container } from '@/components/Container'
 

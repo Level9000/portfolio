@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 
 export function NavLinks() {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
