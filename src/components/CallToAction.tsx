@@ -11,7 +11,7 @@ export function CallToAction() {
         <Container className="relative">
           <div className="mx-auto max-w-md sm:text-center">
             <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
-              Getting started is easy
+              Check out my latest work
             </h2>
             <p className="mt-4 text-lg text-gray-300">
               Visit our interactive portal to experience White Glove Chat for yourself.  Demo the customer experience

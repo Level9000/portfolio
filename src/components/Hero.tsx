@@ -27,10 +27,10 @@ export function Hero() {
                             A Founder, Tech Leader, and Creative Technologist
                         </p>
                         <p className="mt-6 text-lg text-[#C0C6D1]">
-                            With over 13 years of experience in software and product design, I specialize in bringing ideas to life—from concept to launch. Whether you need a mobile app, website, backend system, API integration, or AI-powered content creation, I can design and build the right solution for you.
+                            With over 13 years of experience in software and product design, I specialize in bringing ideas to life, from concept to launch. Whether you need a mobile app, website, backend system, API integration, or AI-powered content creation, I can design and build the right solution for you.
                         </p>
                         <p className="mt-6 text-lg text-[#C0C6D1]">
-                            I’ve founded companies, shipped products at scale, and love collaborating with teams who want to move fast and make something remarkable. Based in Detroit, MI and open to freelance work and creative partnerships—let’s build something great together.
+                            I’ve founded companies, shipped products at scale, and love collaborating with teams who want to move fast and make something remarkable. I'm based in Detroit, MI and open to freelance work and creative partnerships. Let’s build something great together.
                         </p>
                     </div>
 
