@@ -292,7 +292,7 @@ export function PrimaryFeatures() {
         <Container>
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
             <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
-              Here's how it works:
+              What I offer:
             </h2>
             <p className="mt-2 text-lg sm:text-xl text-gray-300">
               Try our interactive demo below to experience both customer and contractor portals.
