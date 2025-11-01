@@ -1,341 +1,349 @@
 'use client'
 
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
-import { useDebouncedCallback } from 'use-debounce'
-import Image, { StaticImageData } from 'next/image'
-
-/**
- * Desktop (portrait-ish) images
- */
-import Portal from '@/images/portal.png'
-import Customer from '@/images/customer_profile.png'
-import Business from '@/images/business_profile.png'
-
-/**
- * Mobile (landscape)
- */
-import PortalMobile from '@/images/portal_mobile.png'
-import CustomerMobile from '@/images/customer_profile_mobile.png'
-import BusinessMobile from '@/images/business_profile_mobile.png'
-
+import Image from 'next/image'
 import { Container } from '@/components/Container'
 
-interface CustomAnimationProps {
-  isForwards: boolean
-  changeCount: number
-}
-type ScreenProps =
-  | { animated: true; custom: CustomAnimationProps }
-  | { animated?: false }
-
-/** Image block used for the DESKTOP/TABLET preview area */
-function FeatureImageScreen({
-                              src,
-                              alt = 'Feature image',
-                            }: {
-  src: StaticImageData | string
-  alt?: string
-}) {
-  return (
-    <div className="flex aspect-[9/16] h-full w-full items-center justify-center overflow-hidden">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-contain"
-        sizes="(max-width: 768px) 90vw, 340px"
-        priority={false}
-      />
-    </div>
-  )
+/* ---------------- Types ---------------- */
+type MediaItem = {
+    type: 'image' | 'video'
+    src: string
+    alt?: string
+    poster?: string
 }
 
-type Feature = {
-  name: string
-  description: string
-  image: StaticImageData          // desktop/tablet
-  imageMobile: StaticImageData    // mobile landscape
-  screen: (_props: ScreenProps) => JSX.Element
+type Capability = {
+    title: string
+    blurb?: string
+    longBlurb?: string
+    media?: MediaItem[]
 }
 
-/** ---------------- Content ---------------- **/
-const customerFeatures: Feature[] = [
-  {
-    name: 'All your services in one beautiful place',
-    description:
-      'View upcoming appointments, renew services, and track preferences. White-glove simplicity designed for luxury clients.',
-    image: Customer,
-    imageMobile: CustomerMobile,
-    screen: (_props: ScreenProps) => <FeatureImageScreen src={Customer} />,
-  },
-  {
-    name: 'Effortless scheduling that respects your time',
-    description:
-      'Reserve from curated openings that sync with your calendar so you only see times when you’re free.',
-    image: Portal,
-    imageMobile: PortalMobile,
-    screen: (_props: ScreenProps) => <FeatureImageScreen src={Portal} />,
-  },
-  {
-    name: 'Concierge messaging & payments',
-    description:
-      'Message your providers, review invoices, and tip seamlessly—without the back-and-forth.',
-    image: Business,
-    imageMobile: BusinessMobile,
-    screen: (_props: ScreenProps) => <FeatureImageScreen src={Business} />,
-  },
+/* ---------------- Data ---------------- */
+const engineering: Capability[] = [
+    {
+        title: 'Mobile App Engineering',
+        blurb: 'iOS & Android apps built with production-grade architectures.',
+        longBlurb:
+            'Cross-platform builds with robust state management, secure auth, clean data layers, CI/CD, app store submission, crash reporting, analytics, and growth hooks.',
+        media: [
+            { type: 'image', src: '/images/capabilities/mobile_1.png', alt: 'Mobile UI screens' },
+            { type: 'image', src: '/images/capabilities/mobile_2.png', alt: 'Onboarding flow' },
+            { type: 'video', src: '/videos/capabilities/mobile_demo.mp4', poster: '/images/capabilities/mobile_poster.jpg' },
+        ],
+    },
+    {
+        title: 'Web App Engineering',
+        blurb: 'Responsive, performant web apps with modern frameworks.',
+        longBlurb:
+            'Next.js (SSR/ISR), edge functions, streaming UIs, and accessible, SEO-friendly builds. Auth, RBAC, and multi-tenant data models included.',
+        media: [
+            { type: 'image', src: '/images/capabilities/web_1.png', alt: 'Marketing site' },
+            { type: 'image', src: '/images/capabilities/web_2.png', alt: 'Dashboard UI' },
+        ],
+    },
+    {
+        title: 'API Integrations',
+        blurb: 'Supabase, Stripe, OAuth, third-party APIs, and custom services.',
+        longBlurb:
+            'Payments & subscriptions, webhooks, data sync, and resilient API layers with retries, backoff, and observability.',
+        media: [{ type: 'image', src: '/images/capabilities/api_1.png', alt: 'API flow diagram' }],
+    },
+    {
+        title: 'Analytics Solutions',
+        blurb: 'Tracking, dashboards, and insight pipelines for growth.',
+        longBlurb:
+            'Event schemas, funnels, cohorts, LTV/CAC, and alerts—from instrumentation to decision-ready reporting.',
+        media: [
+            { type: 'image', src: '/images/capabilities/analytics_1.png', alt: 'Analytics dashboard' },
+            { type: 'image', src: '/images/capabilities/analytics_2.png', alt: 'Funnel chart' },
+        ],
+    },
 ]
 
-const contractorFeatures: Feature[] = [
-  {
-    name: 'Create your business profile',
-    description:
-      'Add your brand, connect your calendar and invoicing, and set up one-tap messages for common replies.',
-    image: Business,
-    imageMobile: BusinessMobile,
-    screen: (_props: ScreenProps) => <FeatureImageScreen src={Business} />,
-  },
-  {
-    name: 'Onboard clients with context',
-    description:
-      'Store conversation history, preferences, and service notes so every touchpoint feels personal.',
-    image: Customer,
-    imageMobile: CustomerMobile,
-    screen: (_props: ScreenProps) => <FeatureImageScreen src={Customer} />,
-  },
-  {
-    name: 'Run your day like a pro',
-    description:
-      "Scheduling, reminders, and payments—organized in a single portal so you can focus on exceptional service.",
-    image: Portal,
-    imageMobile: PortalMobile,
-    screen: (_props: ScreenProps) => <FeatureImageScreen src={Portal} />,
-  },
+const design: Capability[] = [
+    {
+        title: 'User Experience (UX) Design',
+        blurb: 'Flows, IA, research, and usability improvements.',
+        longBlurb:
+            'Clarify user goals, reduce friction, and align journeys to measurable outcomes. Prototypes, research plans, and usability studies.',
+        media: [
+            { type: 'image', src: '/images/capabilities/ux_1.png', alt: 'User flow' },
+            { type: 'image', src: '/images/capabilities/ux_2.png', alt: 'Wireframes' },
+        ],
+    },
+    {
+        title: 'Product Design',
+        blurb: 'From problem framing to shippable product UI and specs.',
+        longBlurb:
+            'Turn ambiguous ideas into focused products: requirements, system maps, design systems, and dev-ready specs.',
+        media: [{ type: 'image', src: '/images/capabilities/product_1.png', alt: 'Product system' }],
+    },
+    {
+        title: 'Service Design',
+        blurb: 'End-to-end journeys across touchpoints and teams.',
+        longBlurb:
+            'Backstage/frontstage orchestration and operational guardrails so services are consistently excellent.',
+        media: [{ type: 'image', src: '/images/capabilities/service_1.png', alt: 'Service blueprint' }],
+    },
+    {
+        title: 'AI Digital Content Creation',
+        blurb: 'On-brand imagery, video, and assets with AI workflows.',
+        longBlurb:
+            'From concept boards to finished assets, combining tooling and taste to deliver fast, high-quality content.',
+        media: [
+            { type: 'image', src: '/images/capabilities/ai_1.png', alt: 'AI concept art' },
+            { type: 'video', src: '/videos/capabilities/ai_reel.mp4', poster: '/images/capabilities/ai_poster.jpg' },
+        ],
+    },
+    {
+        title: 'Branding Strategy',
+        blurb: 'Voice, visuals, and systems that scale.',
+        longBlurb:
+            'Naming, tone, logo systems, and rules that keep teams aligned as you grow.',
+        media: [{ type: 'image', src: '/images/capabilities/branding_1.png', alt: 'Brand system' }],
+    },
+    {
+        title: 'Storytelling',
+        blurb: 'Crisp narratives that make ideas stick and inspire action.',
+        longBlurb:
+            'Narratives for pitches, landing pages, and campaigns that translate value into momentum.',
+        media: [{ type: 'image', src: '/images/capabilities/story_1.png', alt: 'Narrative outline' }],
+    },
+    {
+        title: 'Marketing Campaigns',
+        blurb: 'GTM planning, assets, landing pages, and ads.',
+        longBlurb:
+            'Acquisition loops, creative testing, and channel mix with clear KPIs and a learning cadence.',
+        media: [{ type: 'image', src: '/images/capabilities/marketing_1.png', alt: 'Campaign board' }],
+    },
 ]
 
-function usePrevious<T>(value: T) {
-  const ref = useRef<T>()
-  useEffect(() => {
-    ref.current = value
-  }, [value])
-  return ref.current
-}
+/* ---------------- Carousel ---------------- */
+function MediaCarousel({ items = [] as MediaItem[] }) {
+    const ref = useRef<HTMLDivElement>(null)
+    const [index, setIndex] = useState(0)
 
-/* ---------------- Desktop / Tablet ---------------- */
-function FeaturesDesktop({ features }: { features: Feature[] }) {
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const onChange = useDebouncedCallback((i: number) => setSelectedIndex(i), 100, {
-    leading: true,
-  })
-
-  return (
-    <TabGroup
-      className="grid grid-cols-12 items-center gap-8 lg:gap-16 xl:gap-24"
-      selectedIndex={selectedIndex}
-      onChange={onChange}
-      vertical
-    >
-      <TabList className="relative z-10 order-last col-span-6 space-y-6">
-        {features.map((feature, featureIndex) => {
-          const isActive = featureIndex === selectedIndex
-          return (
-            <div
-              key={feature.name}
-              className={clsx(
-                'relative rounded-2xl transition-colors',
-                'hover:bg-pocket-800/30',
-                isActive && 'bg-pocket-900/50',
-              )}
-            >
-              <div className="relative z-10 p-8">
-                <h3 className="mt-6 text-lg font-semibold text-white">
-                  <Tab className="text-left data-selected:not-data-focus:outline-hidden">
-                    <span className="absolute inset-0 rounded-2xl" />
-                    {feature.name}
-                  </Tab>
-                </h3>
-                <p className="mt-2 text-sm text-gray-400">{feature.description}</p>
-              </div>
-            </div>
-          )
-        })}
-      </TabList>
-
-      <div className="relative col-span-6">
-        <div className="z-10 mx-auto w-full max-w-[340px]">
-          <TabPanels as={Fragment}>
-            {features.map((feature) => (
-              <TabPanel
-                key={feature.name}
-                className="col-start-1 row-start-1 flex h-full w-full focus:outline-offset-32 data-selected:not-data-focus:outline-hidden"
-              >
-                <feature.screen animated={false as any} />
-              </TabPanel>
-            ))}
-          </TabPanels>
-        </div>
-      </div>
-    </TabGroup>
-  )
-}
-
-/* ---------------- Mobile ---------------- */
-function FeaturesMobile({ features }: { features: Feature[] }) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const slideContainerRef = useRef<HTMLDivElement>(null)
-  const slideRefs = useRef<HTMLDivElement[]>([])
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting && entry.target instanceof HTMLDivElement) {
-            setActiveIndex(slideRefs.current.indexOf(entry.target))
-            break
-          }
+    useEffect(() => {
+        const el = ref.current
+        if (!el) return
+        const onScroll = () => {
+            const i = Math.round(el.scrollLeft / el.clientWidth)
+            setIndex(i)
         }
-      },
-      { root: slideContainerRef.current, threshold: 0.6 },
-    )
+        el.addEventListener('scroll', onScroll, { passive: true })
+        return () => el.removeEventListener('scroll', onScroll)
+    }, [])
 
-    for (const slide of slideRefs.current) if (slide) observer.observe(slide)
-    return () => observer.disconnect()
-  }, [])
+    const go = (dir: -1 | 1) => {
+        const el = ref.current
+        if (!el) return
+        const next = Math.min(Math.max(index + dir, 0), items.length - 1)
+        el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
+        setIndex(next)
+    }
 
-  return (
-    <>
-      <div
-        ref={slideContainerRef}
-        className="
-          -mb-4 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth pb-4
+    if (!items.length) return null
+
+    return (
+        <div className="mt-4">
+            <div
+                ref={ref}
+                className="
+          relative flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth
           [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
-          space-x-4 sm:space-x-6
-          scroll-px-4 sm:scroll-px-6
+          rounded-xl ring-1 ring-white/10
         "
-      >
-        {features.map((feature, i) => (
-          <div
-            key={i}
-            ref={(ref) => {
-              if (ref) slideRefs.current[i] = ref!
-            }}
-            className="flex-none snap-center w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)]"
-          >
-            <div className="relative overflow-hidden rounded-3xl bg-gray-800 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-              <div className="relative w-full aspect-[16/9]">
-                <Image
-                  src={feature.imageMobile ?? feature.image}
-                  alt={feature.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                  priority={false}
-                />
-              </div>
-
-              <div className="px-5 py-5 sm:px-6 sm:py-6 min-h-[180px]">
-                <h3 className="text-2xl font-extrabold leading-snug text-white sm:text-3xl">
-                  {feature.name}
-                </h3>
-                <p
-                  className="
-                    mt-3 text-base leading-relaxed text-gray-200 sm:text-lg
-                    overflow-hidden [display:-webkit-box] [-webkit-line-clamp:6] [-webkit-box-orient:vertical]
-                  "
-                >
-                  {feature.description}
-                </p>
-              </div>
+            >
+                {items.map((m, i) => (
+                    <div key={i} className="relative w-full flex-none snap-center">
+                        <div className="relative aspect-[16/9] bg-pocket-900/50">
+                            {m.type === 'image' ? (
+                                <Image
+                                    src={m.src}
+                                    alt={m.alt ?? 'media'}
+                                    fill
+                                    sizes="100vw"
+                                    className="object-contain"
+                                />
+                            ) : (
+                                <video
+                                    controls
+                                    playsInline
+                                    poster={m.poster}
+                                    className="h-full w-full object-contain bg-black/40"
+                                >
+                                    <source src={m.src} />
+                                </video>
+                            )}
+                        </div>
+                    </div>
+                ))}
             </div>
-          </div>
-        ))}
-      </div>
 
-      {/* Dots */}
-      <div className="mt-6 flex justify-center gap-3">
-        {features.map((_, i) => (
-          <button
-            type="button"
-            key={i}
-            className={clsx(
-              'relative h-1 w-5 rounded-full transition-colors',
-              i === activeIndex ? 'bg-gray-200' : 'bg-gray-600/70',
-            )}
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() =>
-              slideRefs.current[i].scrollIntoView({
-                block: 'nearest',
-                inline: 'nearest',
-                behavior: 'smooth',
-              })
-            }
-          >
-            <span className="absolute -inset-x-2 -inset-y-3" />
-          </button>
-        ))}
-      </div>
-    </>
-  )
+            <div className="mt-3 flex items-center justify-between">
+                <div className="flex gap-2">
+                    <button
+                        type="button"
+                        onClick={() => go(-1)}
+                        className="rounded-md px-3 py-1.5 text-sm text-pocket-950 bg-[#ECC969] hover:brightness-95 disabled:opacity-40"
+                        disabled={index === 0}
+                    >
+                        Prev
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => go(1)}
+                        className="rounded-md px-3 py-1.5 text-sm text-pocket-950 bg-[#ECC969] hover:brightness-95 disabled:opacity-40"
+                        disabled={index === items.length - 1}
+                    >
+                        Next
+                    </button>
+                </div>
+                <div className="flex gap-2">
+                    {items.map((_, i) => (
+                        <span
+                            key={i}
+                            className={clsx(
+                                'h-1.5 w-4 rounded-full transition-colors',
+                                i === index ? 'bg-gray-200' : 'bg-gray-600/70'
+                            )}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    )
 }
 
-/* ---------------- Wrapper with audience toggle ---------------- */
+/* ---------------- Tile ---------------- */
+function CapabilityCard({ cap }: { cap: Capability }) {
+    const [open, setOpen] = useState(false)
+    const panelId = `cap-panel-${cap.title.replace(/\s+/g, '-').toLowerCase()}`
+
+    return (
+        <div
+            className={clsx(
+                'rounded-2xl border border-[#ECC969]/15 bg-pocket-900/40 shadow-[0_10px_30px_rgba(0,0,0,0.25)]',
+                'transition hover:border-[#ECC969]/30 hover:bg-pocket-800/40'
+            )}
+        >
+            <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                className="w-full text-left p-5 sm:p-6"
+                aria-expanded={open}
+                aria-controls={panelId}
+            >
+                <h3 className="text-base sm:text-lg font-semibold text-white">{cap.title}</h3>
+                {cap.blurb ? <p className="mt-2 text-sm sm:text-base text-gray-300">{cap.blurb}</p> : null}
+                <div className="mt-3 text-sm text-gray-400">
+                    {open ? 'Click to collapse' : 'Click to learn more'}
+                </div>
+            </button>
+
+            {/* Expanded content — zero space when closed */}
+            <div
+                id={panelId}
+                className={clsx(
+                    'grid transition-[grid-template-rows] duration-300 ease-in-out',
+                    open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                )}
+            >
+                <div className={clsx('overflow-hidden', open ? 'px-5 sm:px-6 pb-5 sm:pb-6' : 'p-0')}>
+                    {open && cap.longBlurb ? (
+                        <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{cap.longBlurb}</p>
+                    ) : null}
+                    {open && cap.media?.length ? <MediaCarousel items={cap.media} /> : null}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+/* ---------------- Component ---------------- */
 export function PrimaryFeatures() {
-  return (
-    <section
-      id="features"
-      aria-label="White Glove portals"
-      className="stitch-bottom stitch-top bg-pocket-950 pt-0 pb-0 text-[#ECC969]"
-    >
-      <div className="pt-20 pb-20 sm:pt-32 sm:pb-32">
-        <Container>
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
-              What I offer:
-            </h2>
-            <p className="mt-2 text-lg sm:text-xl text-gray-300">
-              Try our interactive demo below to experience both customer and contractor portals.
-            </p>
-          </div>
-        </Container>
+    return (
+        <section
+            id="features"
+            aria-label="What I Offer"
+            className="relative stitch-bottom stitch-top bg-pocket-950 pt-0 pb-0 text-[#ECC969]"
+        >
+            {/* Mobile blob (< md) */}
+            <div className="pointer-events-none select-none absolute inset-x-0 top-0 z-0 h-24 sm:h-28 md:hidden">
+                <Image
+                    src="/images/blobs/blob-2.svg"
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover object-top"
+                />
+            </div>
 
-        {/* Top-level audience toggle */}
-        <Container className="mt-8">
-          <TabGroup>
-            <TabList className="mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-xl bg-pocket-900/40 p-2">
-              <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
-                For Customers
-              </Tab>
-              <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
-                For Contractors
-              </Tab>
-            </TabList>
+            {/* Desktop blob (≥ md) — keep aspect, full width */}
+            <div className="pointer-events-none select-none absolute inset-x-0 top-0 z-0 hidden md:block">
+                <Image
+                    src="/images/blobs/blob-2.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width={2400}
+                    height={600}
+                    priority
+                    className="w-[100vw] h-auto mx-auto -translate-y-px"
+                />
+            </div>
 
-            <TabPanels>
-              {/* Customers */}
-              <TabPanel>
-                <div className="mt-16 md:hidden">
-                  <FeaturesMobile features={customerFeatures} />
-                </div>
-                <Container className="hidden md:mt-20 md:block">
-                  <FeaturesDesktop features={customerFeatures} />
+            {/* Content padding to clear blobs (tune these as needed) */}
+            <div className="pt-24 sm:pt-28 md:pt-36 lg:pt-56 xl:pt-56 pb-20 sm:pb-32">
+                <Container>
+                    <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
+                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">What I Offer</h2>
+                        <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
+                            I run <span className="font-semibold text-white">Small Machines AI</span>, a creative design studio that
+                            takes an agile approach to design and development. We believe in a build–measure–learn philosophy—and
+                            above all, we want to do great work with great people who are trying to make the world, and peoples’ lives,
+                            better.
+                        </p>
+                    </div>
                 </Container>
-              </TabPanel>
 
-              {/* Contractors */}
-              <TabPanel>
-                <div className="mt-16 md:hidden">
-                  <FeaturesMobile features={contractorFeatures} />
-                </div>
-                <Container className="hidden md:mt-20 md:block">
-                  <FeaturesDesktop features={contractorFeatures} />
+                <Container className="mt-8">
+                    <TabGroup>
+                        <TabList className="mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-xl bg-pocket-900/40 p-2">
+                            <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
+                                Engineering
+                            </Tab>
+                            <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
+                                Design
+                            </Tab>
+                        </TabList>
+
+                        <TabPanels>
+                            {/* Engineering tiles */}
+                            <TabPanel>
+                                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                    {engineering.map((cap) => (
+                                        <CapabilityCard key={cap.title} cap={cap} />
+                                    ))}
+                                </div>
+                            </TabPanel>
+
+                            {/* Design tiles */}
+                            <TabPanel>
+                                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                    {design.map((cap) => (
+                                        <CapabilityCard key={cap.title} cap={cap} />
+                                    ))}
+                                </div>
+                            </TabPanel>
+                        </TabPanels>
+                    </TabGroup>
                 </Container>
-              </TabPanel>
-            </TabPanels>
-          </TabGroup>
-        </Container>
-      </div>
-    </section>
-  )
+            </div>
+        </section>
+    )
 }
