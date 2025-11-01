@@ -37,7 +37,7 @@ export function CallToAction() {
             {/* Content padding to clear blobs:
           - Mobile: match mobile blob heights
           - Desktop: fixed, tunable paddings (no vh) */}
-            <div className="pt-24 sm:pt-28 md:pt-20 lg:pt-24 xl:pt-28 pb-20 sm:pb-28">
+            <div className="pt-24 sm:pt-28 md:pt-20 lg:pt-72 xl:pt-72 pb-20 sm:pb-28">
                 <Container className="relative z-10">
                     <div className="mx-auto max-w-6xl grid items-start gap-6 md:gap-16 md:grid-cols-2">
                         {/* Left: preview image */}
