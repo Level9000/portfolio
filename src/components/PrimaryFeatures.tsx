@@ -291,17 +291,17 @@ export function PrimaryFeatures() {
                     alt=""
                     aria-hidden="true"
                     width={2400}
-                    height={600}
+                    height={300}
                     priority
                     className="w-[100vw] h-auto mx-auto -translate-y-px"
                 />
             </div>
 
             {/* Content padding to clear blobs (tune these as needed) */}
-            <div className="pt-24 sm:pt-28 md:pt-36 lg:pt-56 xl:pt-56 pb-20 sm:pb-32">
+            <div className="pt-24 sm:pt-28 md:pt-36 lg:pt-72 xl:pt-72 pb-20 sm:pb-32">
                 <Container>
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">What I Offer</h2>
+                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">What I Offer:</h2>
                         <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
                             I run <span className="font-semibold text-white">Small Machines AI</span>, a creative design studio that
                             takes an agile approach to design and development. We believe in a build–measure–learn philosophy—and
