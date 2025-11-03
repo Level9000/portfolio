@@ -304,7 +304,7 @@ export function PrimaryFeatures() {
                         <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">What I Offer:</h2>
                         <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
                             I run <span className="font-semibold text-white">Small Machines AI</span>, a creative design studio that
-                            takes an agile approach to design and development. We believe in a build–measure–learn philosophy—and
+                            takes an agile approach to design and development. We believe in a build–measure–learn philosophy and
                             above all, we want to do great work with great people who are trying to make the world, and peoples’ lives,
                             better.
                         </p>
@@ -313,6 +313,7 @@ export function PrimaryFeatures() {
 
                 <Container className="mt-8">
                     <TabGroup>
+                        <h1>Capabilities:</h1>
                         <TabList className="mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-xl bg-pocket-900/40 p-2">
                             <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
                                 Engineering
