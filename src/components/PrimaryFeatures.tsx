@@ -219,15 +219,26 @@ function MediaCarousel({ items = [] as MediaItem[] }) {
 }
 
 /* ---------------- Tile ---------------- */
-function CapabilityCard({ cap }: { cap: Capability }) {
+type CapabilityCardProps = {
+    cap: Capability
+    variant: 'engineering' | 'design'
+}
+
+function CapabilityCard({ cap, variant }: CapabilityCardProps) {
     const [open, setOpen] = useState(false)
     const panelId = `cap-panel-${cap.title.replace(/\s+/g, '-').toLowerCase()}`
+
+    const baseBg =
+        variant === 'engineering'
+            ? 'bg-slate-800/80 hover:bg-slate-700/80'
+            : 'bg-slate-700/80 hover:bg-slate-600/80'
 
     return (
         <div
             className={clsx(
-                'rounded-2xl border border-[#ECC969]/15 bg-pocket-900/40 shadow-[0_10px_30px_rgba(0,0,0,0.25)]',
-                'transition hover:border-[#ECC969]/30 hover:bg-pocket-800/40'
+                'rounded-2xl border border-[#ECC969]/15 shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition',
+                'hover:border-[#ECC969]/30',
+                baseBg
             )}
         >
             <button
@@ -239,8 +250,8 @@ function CapabilityCard({ cap }: { cap: Capability }) {
             >
                 <h3 className="text-base sm:text-lg font-semibold text-white">{cap.title}</h3>
                 {cap.blurb ? <p className="mt-2 text-sm sm:text-base text-gray-300">{cap.blurb}</p> : null}
-                <div className="mt-3 text-sm text-gray-400">
-                    {open ? 'Click to collapse' : 'Click to learn more'}
+                <div className="mt-3 text-sm text-[#ECC969]">
+                    {open ? 'Click to collapse' : 'Click to read more'}
                 </div>
             </button>
 
@@ -269,7 +280,7 @@ export function PrimaryFeatures() {
         <section
             id="features"
             aria-label="What I Offer"
-            className="relative stitch-bottom stitch-top bg-pocket-950 pt-0 pb-0 text-[#ECC969]"
+            className="relative stitch-bottom stitch-top bg-black pt-0 pb-0 text-[#ECC969]"
         >
             {/* Mobile blob (< md) */}
             <div className="pointer-events-none select-none absolute inset-x-0 top-0 z-0 h-24 sm:h-28 md:hidden">
@@ -303,7 +314,11 @@ export function PrimaryFeatures() {
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
                         <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">What I Offer:</h2>
                         <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
-                            I run <span className="font-semibold text-white">Small Machines AI</span>, a creative design studio that
+                            I run{' '}
+                            <span className="font-semibold text-[#ECC969]">
+                Small Machines AI
+              </span>
+                            , a creative design studio that
                             takes an agile approach to design and development. We believe in a build–measure–learn philosophy and
                             above all, we want to do great work with great people who are trying to make the world, and peoples’ lives,
                             better.
@@ -313,12 +328,12 @@ export function PrimaryFeatures() {
 
                 <Container className="mt-8">
                     <TabGroup>
-                        <h1>Capabilities:</h1>
-                        <TabList className="mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-xl bg-pocket-900/40 p-2">
-                            <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
+
+                        <TabList className="mx-auto mt-4 flex w-full max-w-xl items-center justify-center gap-2 rounded-full bg-black/80 p-1.5">
+                            <Tab className="flex-1 rounded-full px-4 py-2.5 text-center text-sm sm:text-base font-semibold tracking-wide uppercase bg-slate-900/60 text-gray-100 hover:bg-slate-800/80 data-[selected]:bg-[#ECC969] data-[selected]:text-black data-focus:outline-hidden transition">
                                 Engineering
                             </Tab>
-                            <Tab className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-medium text-gray-200 data-selected:bg-pocket-800 data-selected:text-white data-focus:outline-hidden transition">
+                            <Tab className="flex-1 rounded-full px-4 py-2.5 text-center text-sm sm:text-base font-semibold tracking-wide uppercase bg-slate-900/60 text-gray-100 hover:bg-slate-800/80 data-[selected]:bg-[#ECC969] data-[selected]:text-black data-focus:outline-hidden transition">
                                 Design
                             </Tab>
                         </TabList>
@@ -328,7 +343,7 @@ export function PrimaryFeatures() {
                             <TabPanel>
                                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                     {engineering.map((cap) => (
-                                        <CapabilityCard key={cap.title} cap={cap} />
+                                        <CapabilityCard key={cap.title} cap={cap} variant="engineering" />
                                     ))}
                                 </div>
                             </TabPanel>
@@ -337,7 +352,7 @@ export function PrimaryFeatures() {
                             <TabPanel>
                                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                     {design.map((cap) => (
-                                        <CapabilityCard key={cap.title} cap={cap} />
+                                        <CapabilityCard key={cap.title} cap={cap} variant="design" />
                                     ))}
                                 </div>
                             </TabPanel>
