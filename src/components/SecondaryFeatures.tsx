@@ -253,10 +253,10 @@ export function SecondaryFeatures() {
         <Container>
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-[#0D1B2A]">
-              Two experiences. One white-glove platform.
+              The work speaks for itself.
             </h2>
             <p className="mt-3 text-lg text-[#0D1B2A]/70">
-              Choose the portal that fits your role—clients organize services; contractors manage relationships.
+              Take a look at some of the projects Small Machines AI is proud of:
             </p>
           </div>
 
