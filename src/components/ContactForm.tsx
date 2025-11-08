@@ -130,7 +130,7 @@ export default function ContactForm() {
                     <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-[#4A7CFF] px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-[#3f6be0] disabled:cursor-not-allowed disabled:opacity-70 transition"
+                        className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-[#132e42cc] px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-[#3f6be0] disabled:cursor-not-allowed disabled:opacity-70 transition"
                     >
                         {status === 'loading' ? 'Sending…' : 'Submit'}
                     </button>

@@ -7,6 +7,7 @@ import {WhosItFor} from '@/components/WhosItFor'
 import {SecondaryFeatures} from '@/components/SecondaryFeatures'
 import LatestBlogTeaser from "@/components/LatestBlogTeaser";
 import ContactForm from "@/components/ContactForm";
+import {ProjectsShowcase} from "@/components/ProjectsShowcase";
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
             <Hero/>
             <CallToAction/>
             <PrimaryFeatures/>
+            <ProjectsShowcase/>
             <LatestBlogTeaser/>
             <ContactForm/>
         </>

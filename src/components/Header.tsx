@@ -3,16 +3,16 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
-import { Home, StarsIcon, WrenchIcon, BadgeQuestionMark } from 'lucide-react'
+import {Home, StarsIcon, WrenchIcon, BadgeQuestionMark, Pencil, FolderIcon, AwardIcon} from 'lucide-react'
 
 function TopIconNav() {
   const pathname = usePathname()
 
   const items = [
     { href: '/', label: 'Home', icon: Home, activeOn: ['/'] },
-    { href: '/#secondary-features', label: 'Features', icon: StarsIcon },
-    { href: '/support', label: 'Support', icon: WrenchIcon, activeOn: ['/support'] },
-    { href: '/#faqs', label: 'FAQs', icon: BadgeQuestionMark },
+    { href: '/blog', label: 'Blog', icon: Pencil, activeOn: ['/blog']},
+    { href: '/portfolio', label: 'Portfolio', icon: FolderIcon, activeOn: ['/portfolio'] },
+    { href: '/experience', label: 'Experience', icon: AwardIcon, activeOn: ['/experience'] },
   ]
 
   return (

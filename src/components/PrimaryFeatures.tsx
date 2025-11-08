@@ -31,7 +31,11 @@ const engineering: Capability[] = [
         media: [
             { type: 'image', src: '/images/capabilities/mobile_1.png', alt: 'Mobile UI screens' },
             { type: 'image', src: '/images/capabilities/mobile_2.png', alt: 'Onboarding flow' },
-            { type: 'video', src: '/videos/capabilities/mobile_demo.mp4', poster: '/images/capabilities/mobile_poster.jpg' },
+            {
+                type: 'video',
+                src: '/videos/capabilities/mobile_demo.mp4',
+                poster: '/images/capabilities/mobile_poster.jpg',
+            },
         ],
     },
     {
@@ -95,7 +99,11 @@ const design: Capability[] = [
             'From concept boards to finished assets, combining tooling and taste to deliver fast, high-quality content.',
         media: [
             { type: 'image', src: '/images/capabilities/ai_1.png', alt: 'AI concept art' },
-            { type: 'video', src: '/videos/capabilities/ai_reel.mp4', poster: '/images/capabilities/ai_poster.jpg' },
+            {
+                type: 'video',
+                src: '/videos/capabilities/ai_reel.mp4',
+                poster: '/images/capabilities/ai_poster.jpg',
+            },
         ],
     },
     {
@@ -272,7 +280,9 @@ function CapabilityCard({ cap, variant }: CapabilityCardProps) {
                 aria-controls={panelId}
             >
                 <h3 className="text-base sm:text-lg font-semibold text-white">{cap.title}</h3>
-                {cap.blurb ? <p className="mt-2 text-sm sm:text-base text-gray-300">{cap.blurb}</p> : null}
+                {cap.blurb ? (
+                    <p className="mt-2 text-sm sm:text-base text-gray-300">{cap.blurb}</p>
+                ) : null}
                 <div className="mt-3 text-sm text-[#ECC969]">
                     {open ? 'Click to collapse' : 'Click to read more'}
                 </div>
@@ -288,7 +298,9 @@ function CapabilityCard({ cap, variant }: CapabilityCardProps) {
             >
                 <div className={clsx('overflow-hidden', open ? 'px-5 sm:px-6 pb-5 sm:pb-6' : 'p-0')}>
                     {open && cap.longBlurb ? (
-                        <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{cap.longBlurb}</p>
+                        <p className="text-sm sm:text-base text-gray-200 leading-relaxed">
+                            {cap.longBlurb}
+                        </p>
                     ) : null}
                     {open && cap.media?.length ? <MediaCarousel items={cap.media} /> : null}
                 </div>
@@ -303,7 +315,8 @@ export function PrimaryFeatures() {
         <section
             id="features"
             aria-label="What I Offer"
-            className="relative stitch-bottom stitch-top bg-black pt-0 pb-0 text-[#ECC969]"
+            // ⬇️ stitch-bottom & stitch-top removed so no dotted borders
+            className="relative bg-black pt-0 pb-0 text-[#ECC969]"
         >
             {/* Mobile blob (< md) */}
             <div className="pointer-events-none select-none absolute inset-x-0 top-0 z-0 h-24 sm:h-28 md:hidden">
@@ -340,16 +353,14 @@ export function PrimaryFeatures() {
                         </h2>
                         <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
                             I run{' '}
-                            <span className="font-semibold text-[#ECC969]">
-                Small Machines AI
-              </span>
-                            , a creative design studio that takes an agile approach to design and
+                            <span className="font-semibold text-[#ECC969]">Small Machines AI</span>, a
+                            creative design studio that takes an agile approach to design and
                             development. We believe in a build–measure–learn philosophy and above all,
                             we want to do great work with great people who are trying to make the
                             world, and peoples’ lives, better.
                         </p>
 
-                        {/* NEW: button under the main paragraph */}
+                        {/* Button under the main paragraph */}
                         <div className="mt-5">
                             <a
                                 href="https://smallmachines.ai"
