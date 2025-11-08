@@ -121,6 +121,27 @@ const design: Capability[] = [
     },
 ]
 
+const publicSpeaking: Capability[] = [
+    {
+        title: 'Agile Product Development Talks',
+        blurb: 'Practical sessions on sprints, experimentation, and shipping value.',
+        longBlurb:
+            'Conference and meetup talks focused on real-world agile practices: sprint structure, experimentation, and building product teams that actually ship.',
+    },
+    {
+        title: 'Founder & Product Storytelling',
+        blurb: 'Helping teams explain what they’re building in clear language.',
+        longBlurb:
+            'Workshops and talks that help founders and product leaders craft narratives for investors, customers, and internal teams.',
+    },
+    {
+        title: 'Team Workshops & Offsites',
+        blurb: 'Facilitated sessions for alignment and momentum.',
+        longBlurb:
+            'Interactive sessions that blend teaching, facilitation, and exercises to get cross-functional teams aligned and moving in the same direction.',
+    },
+]
+
 /* ---------------- Carousel ---------------- */
 function MediaCarousel({ items = [] as MediaItem[] }) {
     const ref = useRef<HTMLDivElement>(null)
@@ -221,7 +242,7 @@ function MediaCarousel({ items = [] as MediaItem[] }) {
 /* ---------------- Tile ---------------- */
 type CapabilityCardProps = {
     cap: Capability
-    variant: 'engineering' | 'design'
+    variant: 'engineering' | 'design' | 'publicSpeaking'
 }
 
 function CapabilityCard({ cap, variant }: CapabilityCardProps) {
@@ -231,7 +252,9 @@ function CapabilityCard({ cap, variant }: CapabilityCardProps) {
     const baseBg =
         variant === 'engineering'
             ? 'bg-slate-800/80 hover:bg-slate-700/80'
-            : 'bg-slate-700/80 hover:bg-slate-600/80'
+            : variant === 'design'
+                ? 'bg-slate-700/80 hover:bg-slate-600/80'
+                : 'bg-slate-900/80 hover:bg-slate-800/80' // public speaking
 
     return (
         <div
@@ -312,29 +335,45 @@ export function PrimaryFeatures() {
             <div className="pt-24 sm:pt-28 md:pt-36 lg:pt-72 xl:pt-72 pb-20 sm:pb-32">
                 <Container>
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">What I Offer:</h2>
+                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
+                            What I Offer:
+                        </h2>
                         <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
                             I run{' '}
                             <span className="font-semibold text-[#ECC969]">
                 Small Machines AI
               </span>
-                            , a creative design studio that
-                            takes an agile approach to design and development. We believe in a build–measure–learn philosophy and
-                            above all, we want to do great work with great people who are trying to make the world, and peoples’ lives,
-                            better.
+                            , a creative design studio that takes an agile approach to design and
+                            development. We believe in a build–measure–learn philosophy and above all,
+                            we want to do great work with great people who are trying to make the
+                            world, and peoples’ lives, better.
                         </p>
+
+                        {/* NEW: button under the main paragraph */}
+                        <div className="mt-5">
+                            <a
+                                href="https://smallmachines.ai"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center rounded-full bg-[#ECC969] px-5 py-2.5 text-sm sm:text-base font-semibold text-pocket-950 shadow-md hover:brightness-95 transition"
+                            >
+                                Check us out today
+                            </a>
+                        </div>
                     </div>
                 </Container>
 
                 <Container className="mt-8">
                     <TabGroup>
-
                         <TabList className="mx-auto mt-4 flex w-full max-w-xl items-center justify-center gap-2 rounded-full bg-black/80 p-1.5">
                             <Tab className="flex-1 rounded-full px-4 py-2.5 text-center text-sm sm:text-base font-semibold tracking-wide uppercase bg-slate-900/60 text-gray-100 hover:bg-slate-800/80 data-[selected]:bg-[#ECC969] data-[selected]:text-black data-focus:outline-hidden transition">
                                 Engineering
                             </Tab>
                             <Tab className="flex-1 rounded-full px-4 py-2.5 text-center text-sm sm:text-base font-semibold tracking-wide uppercase bg-slate-900/60 text-gray-100 hover:bg-slate-800/80 data-[selected]:bg-[#ECC969] data-[selected]:text-black data-focus:outline-hidden transition">
                                 Design
+                            </Tab>
+                            <Tab className="flex-1 rounded-full px-4 py-2.5 text-center text-sm sm:text-base font-semibold tracking-wide uppercase bg-slate-900/60 text-gray-100 hover:bg-slate-800/80 data-[selected]:bg-[#ECC969] data-[selected]:text-black data-focus:outline-hidden transition">
+                                Public Speaking
                             </Tab>
                         </TabList>
 
@@ -353,6 +392,15 @@ export function PrimaryFeatures() {
                                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                                     {design.map((cap) => (
                                         <CapabilityCard key={cap.title} cap={cap} variant="design" />
+                                    ))}
+                                </div>
+                            </TabPanel>
+
+                            {/* Public Speaking tiles */}
+                            <TabPanel>
+                                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                    {publicSpeaking.map((cap) => (
+                                        <CapabilityCard key={cap.title} cap={cap} variant="publicSpeaking" />
                                     ))}
                                 </div>
                             </TabPanel>
