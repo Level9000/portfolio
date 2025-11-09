@@ -85,13 +85,6 @@ export default function LatestBlogTeaser() {
                         {/* Actions */}
                         <div className="flex flex-wrap gap-3">
                             <Link
-                                href={`/blog/${latest.slug}`}
-                                className="inline-flex items-center rounded-full bg-white text-black px-5 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-200 transition"
-                            >
-                                Read article
-                            </Link>
-
-                            <Link
                                 href="/blog"
                                 className="inline-flex items-center rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-zinc-100 hover:bg-white/5 transition"
                             >

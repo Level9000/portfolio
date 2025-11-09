@@ -355,9 +355,9 @@ export function PrimaryFeatures() {
                             I run{' '}
                             <span className="font-semibold text-[#ECC969]">Small Machines AI</span>, a
                             creative design studio that takes an agile approach to design and
-                            development. We believe in a build–measure–learn philosophy and above all,
-                            we want to do great work with great people who are trying to make the
-                            world, and peoples’ lives, better.
+                            development. We also specialize in generative AI digital content and pair that with
+                            exceptional storytelling.  Above all else, we want to do great work with great people
+                            who are trying to make the world, and peoples’ lives, better.
                         </p>
 
                         {/* Button under the main paragraph */}
