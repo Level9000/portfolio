@@ -54,9 +54,10 @@ export default function LatestBlogTeaser() {
                                 Check out my latest blog
                             </h2>
                             <p className="max-w-2xl text-sm sm:text-base text-zinc-200">
-                                Below are my thoughts and opinions on professional topics that I&apos;ve
-                                formed over the course of my career. If you&apos;d like to learn more, or
-                                would like to reach out, feel free to leave a message with the contact
+                                Below are my thoughts and opinions on professional topics that I've
+                                formed over the course of my career. I don't have it all figured it out
+                                but im sharing what I learn along the way. If my message is resonating and
+                                you'd like to reach out, feel free to leave a message using the contact
                                 form below.
                             </p>
                         </header>
