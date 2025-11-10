@@ -15,6 +15,17 @@ export type Post = {
 // List of posts for /blog index (newest first)
 export const posts: Post[] = [
     {
+        slug: 'building-for-humans-in-the-age-of-ai',
+        title: 'Building for Humans in the Age of AI',
+        subtitle:
+            'My approach to building AI-powered products that elevate people instead of replacing them.',
+        displayDate: 'Nov 10, 2025',
+        readingTime: '7min read',
+        heroImage: '/images/blog/handmark_logo.png',
+        teaser:
+            'AI shouldn’t exist just for efficiency’s sake. In this post, I share why I care so deeply about craftsmanship, empathy, and competitive excellence in product development—and how that led me to build Pocket Panel as a net-new experience that empowers underrepresented users instead of automating them away.',
+    },
+    {
         slug: 'executing-software-product-development-sprints',
         title: 'Executing Software Product Development Sprints',
         subtitle:
