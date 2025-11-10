@@ -14,9 +14,9 @@ export default function Home() {
         <>
             <Hero/>
             <CallToAction/>
-            <PrimaryFeatures/>
-            <ProjectsShowcase/>
             <LatestBlogTeaser/>
+            <ProjectsShowcase/>
+            <PrimaryFeatures/>
             <ContactForm/>
         </>
     )
