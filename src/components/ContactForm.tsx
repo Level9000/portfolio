@@ -1,7 +1,6 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
-import Image from 'next/image'
 import { Container } from '@/components/Container'
 
 export default function ContactForm() {
@@ -51,7 +50,8 @@ export default function ContactForm() {
             {/* Content */}
             <div className="relative z-10 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-24">
                 <Container>
-                    <div className="mx-auto max-w-3xl">
+                    {/* ⬇️ Removed mx-auto so this aligns left like other sections */}
+                    <div className="max-w-3xl lg:max-w-4xl">
                         {/* Heading */}
                         <header className="mb-8 sm:mb-10">
                             <h2
