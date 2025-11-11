@@ -7,11 +7,8 @@ export default function BlogIndexPage() {
     return (
         <div className="space-y-10">
             <header className="space-y-4">
-                <p className="text-xs font-semibold tracking-[0.3em] text-zinc-500 uppercase">
-                    Professional
-                </p>
                 <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
-                    THOUGHTS
+                    Welcome to my blog
                 </h1>
                 <p className="max-w-2xl text-lg text-zinc-200">
                     Below are my thoughts and opinions on professional topics that I&apos;ve

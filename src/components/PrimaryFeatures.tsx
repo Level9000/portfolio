@@ -314,7 +314,7 @@ export function PrimaryFeatures() {
     return (
         <section
             id="features"
-            aria-label="What I Offer"
+            aria-label="Need my help?"
             // ⬇️ stitch-bottom & stitch-top removed so no dotted borders
             className="relative bg-black pt-0 pb-0 text-[#ECC969]"
         >
@@ -349,7 +349,7 @@ export function PrimaryFeatures() {
                 <Container>
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
                         <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-white">
-                            What I Offer:
+                            Need my help?
                         </h2>
                         <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-300">
                             I run{' '}
